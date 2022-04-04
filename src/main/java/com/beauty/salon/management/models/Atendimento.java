@@ -1,16 +1,37 @@
 package com.beauty.salon.management.models;
 
+import java.io.Serializable;
 import java.time.LocalTime;
 import java.util.Date;
 
-public class Atendimento {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="atendimentos")
+public class Atendimento implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	private Cliente cliente;
 	private Profissional profissional;
 	private Servico servico;
 	private Date data;
 	private LocalTime hora;
 	
+	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public Cliente getCliente() {
 		return cliente;
 	}
@@ -44,9 +65,7 @@ public class Atendimento {
 	
 	@Override
 	public String toString() {
-		return "Atendimento [cliente=" + cliente + ", profissional=" + profissional + ", servico=" + servico + ", data="
-				+ data + ", hora=" + hora + "]";
-	}
-	
-	
+		return "Atendimento [id=" + id + ", cliente=" + cliente + ", profissional=" + profissional + ", servico="
+				+ servico + ", data=" + data + ", hora=" + hora + "]";
+	}		
 }
