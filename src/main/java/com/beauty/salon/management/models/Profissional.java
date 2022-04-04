@@ -1,7 +1,22 @@
 package com.beauty.salon.management.models;
 
-public class Profissional {
+import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="profissionais")
+public class Profissional implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	private String nome;
 	private String telefone;
 	private Endereco endereco;
@@ -10,7 +25,12 @@ public class Profissional {
 	private String cargo;
 	private String dataNascimento;
 	
-	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public String getNome() {
 		return nome;
 	}
@@ -56,9 +76,7 @@ public class Profissional {
 	
 	@Override
 	public String toString() {
-		return "Profissional [nome=" + nome + ", telefone=" + telefone + ", endereco=" + endereco + ", email=" + email
-				+ ", cpf=" + cpf + ", cargo=" + cargo + ", dataNascimento=" + dataNascimento + "]";
+		return "Profissional [id=" + id + ", nome=" + nome + ", telefone=" + telefone + ", endereco=" + endereco
+				+ ", email=" + email + ", cpf=" + cpf + ", cargo=" + cargo + ", dataNascimento=" + dataNascimento + "]";
 	}
-	
-	
 }
