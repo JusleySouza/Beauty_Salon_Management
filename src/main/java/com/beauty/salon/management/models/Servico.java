@@ -1,14 +1,34 @@
 package com.beauty.salon.management.models;
 
-public class Servico {
+import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="servicos")
+public class Servico implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	private String tipoServico;
 	private String nome;
 	private double valor;
 	private int horasEstimadas;
 	private int minutosEstimados;
 	
-	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public int getHorasEstimadas() {
 		return horasEstimadas;
 	}
@@ -42,12 +62,15 @@ public class Servico {
 	
 	@Override
 	public String toString() {
-		return "Servico [tipoServico=" + tipoServico + ", nome=" + nome + ", valor=" + valor + ", horasEstimadas="
-				+ horasEstimadas + ", minutosEstimados=" + minutosEstimados + "]";
+		return "Servico [id=" + id + ", tipoServico=" + tipoServico + ", nome=" + nome + ", valor=" + valor
+				+ ", horasEstimadas=" + horasEstimadas + ", minutosEstimados=" + minutosEstimados + "]";
+	}
+	
+
 	}
 	
 	
-	}
+	
 	
 	
 
