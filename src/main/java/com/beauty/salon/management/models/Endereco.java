@@ -1,10 +1,22 @@
 package com.beauty.salon.management.models;
 
-import java.util.UUID;
+import java.io.Serializable;
 
-public class Endereco {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-	private UUID id;
+@Entity
+@Table(name="enderecos")
+public class Endereco implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	private String rua;
 	private int numero;
 	private String bairro;
@@ -12,10 +24,10 @@ public class Endereco {
 	private String cep;
 	
 	
-	public UUID getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(UUID id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getRua() {
@@ -54,6 +66,5 @@ public class Endereco {
 		return "Endereco [id=" + id + ", rua=" + rua + ", numero=" + numero + ", bairro=" + bairro + ", cidade="
 				+ cidade + ", cep=" + cep + "]";
 	}
-	
 	
 }
